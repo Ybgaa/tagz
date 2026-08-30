@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Youssef Bassem — Software Developer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+            --blue-border: #dbeafe;
+
+            --text: #15171a;
+            --muted: #737983;
+            --border: #e5e7eb;
+            --background: #f5f7fa;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% -15%,
+                    #eaf2ff 0,
+                    #f5f7fa 42%,
+                    #f5f7fa 100%
+                );
+
+            color: var(--text);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px 16px;
+        }
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        .page {
+            width: 100%;
+            max-width: 450px;
+
+            animation: appear .65s ease-out;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           CARD
+        ========================== */
+
+        .card {
+            position: relative;
+
+            background: rgba(255, 255, 255, .96);
+
+            border: 1px solid var(--border);
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(30, 55, 90, .09),
+                0 3px 10px rgba(30, 55, 90, .035);
+        }
+
+        /* Small colored accent at the top */
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #3b82f6,
+                    #60a5fa
+                );
+        }
+
+        /* =========================
+           PROFILE
+        ========================== */
+
+        .profile {
+            text-align: center;
+
+            padding: 42px 25px 31px;
+        }
+
+        /*
+            ONLY IMAGE ON THE PAGE
+
+            Put the M2M logo in the same
+            folder and name it:
+
+            logo.png
+        */
+
+        .profile-image {
+            display: block;
+
+            width: 108px;
+            height: 108px;
+
+            object-fit: contain;
+
+            margin: 0 auto 22px;
+
+            padding: 14px;
+
+            border-radius: 27px;
+
+            background: white;
+
+            border: 1px solid var(--blue-border);
+
+            box-shadow:
+                0 10px 30px rgba(37, 99, 235, .10);
+
+            animation: float 5s ease-in-out infinite;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 14px 35px rgba(37, 99, 235, .16);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        .name {
+            font-size: 31px;
+
+            line-height: 1.15;
+
+            font-weight: 750;
+
+            letter-spacing: -.9px;
+
+            color: var(--text);
+        }
+
+        .role {
+            margin-top: 9px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            font-weight: 450;
+        }
+
+        .company {
+            color: var(--blue);
+
+            font-weight: 650;
+        }
+
+        /* =========================
+           DIVIDER
+        ========================== */
+
+        .divider {
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--border),
+                    transparent
+                );
+
+            margin: 0 27px;
+        }
+
+        /* =========================
+           CONTACTS
+        ========================== */
+
+        .contacts {
+            padding: 20px 22px 9px;
+        }
+
+        .contact {
+            display: flex;
+
+            align-items: center;
+
+            min-height: 70px;
+
+            padding: 10px 9px;
+
+            border-radius: 15px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            transition:
+                background .2s ease,
+                transform .2s ease;
+        }
+
+        .contact:hover {
+            background: var(--blue-light);
+
+            transform: translateX(3px);
+        }
+
+        .contact:active {
+            transform: scale(.99);
+        }
+
+        /* Icon */
+
+        .icon {
+            width: 44px;
+            height: 44px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: var(--blue-light);
+
+            color: var(--blue);
+
+            border: 1px solid var(--blue-border);
+
+            margin-right: 14px;
+
+            transition:
+                background .2s ease,
+                color .2s ease;
+        }
+
+        .contact:hover .icon {
+            background: var(--blue);
+
+            color: white;
+        }
+
+        .icon svg {
+            width: 19px;
+            height: 19px;
+
+            stroke: currentColor;
+        }
+
+        .details {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+        .label {
+            display: block;
+
+            color: #9298a2;
+
+            font-size: 11px;
+
+            font-weight: 550;
+
+            margin-bottom: 3px;
+        }
+
+        .value {
+            display: block;
+
+            color: #25282d;
+
+            font-size: 14px;
+
+            font-weight: 550;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .arrow {
+            color: #b3bac4;
+
+            font-size: 21px;
+
+            margin-left: 8px;
+
+            transition:
+                color .2s ease,
+                transform .2s ease;
+        }
+
+        .contact:hover .arrow {
+            color: var(--blue);
+
+            transform: translateX(2px);
+        }
+
+        /* =========================
+           BUTTONS
+        ========================== */
+
+        .actions {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            padding: 15px 22px 23px;
+        }
+
+        .button {
+            min-height: 49px;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 650;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .button svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        /* Save */
+
+        .save {
+            border: 1px solid var(--blue-border);
+
+            background: white;
+
+            color: var(--blue);
+
+            box-shadow:
+                0 2px 6px rgba(37, 99, 235, .04);
+        }
+
+        .save:hover {
+            background: var(--blue-light);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, .09);
+        }
+
+        /* Website */
+
+        .website {
+            border: 1px solid var(--blue);
+
+            background: var(--blue);
+
+            color: white;
+
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, .17);
+        }
+
+        .website:hover {
+            background: var(--blue-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 24px rgba(37, 99, 235, .22);
+        }
+
+        .button:active {
+            transform: scale(.98);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        .footer {
+            text-align: center;
+
+            padding: 0 20px 22px;
+
+            color: #a2a8b1;
+
+            font-size: 10px;
+
+            letter-spacing: .15px;
+        }
+
+        .footer span {
+            color: #6b7280;
+        }
+
+        /* =========================
+           SAVE TOAST
+        ========================== */
+
+        .toast {
+            position: fixed;
+
+            left: 50%;
+
+            bottom: 25px;
+
+            transform:
+                translate(-50%, 20px);
+
+            background: #17191c;
+
+            color: white;
+
+            padding: 11px 18px;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            font-weight: 550;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+
+            z-index: 10;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.18);
+        }
+
+        .toast.show {
+            opacity: 1;
+
+            transform:
+                translate(-50%, 0);
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 430px) {
+
+            body {
+                padding: 14px;
+            }
+
+            .profile {
+                padding: 34px 20px 27px;
+            }
+
+            .profile-image {
+                width: 94px;
+                height: 94px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .contacts {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .actions {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <main class="card">
+
+        <!-- =========================
+             PROFILE
+        ========================== -->
+
+        <section class="profile">
+
+            <!--
+                M2M LOGO
+
+                Put logo.png beside this HTML file.
+            -->
+
+            <img
+                src="logo.jpg"
+                alt="M2M Software Studio"
+                class="profile-image"
+            >
+
+            <h1 class="name">
+                Youssef Bassem
+            </h1>
+
+            <p class="role">
+                Software Developer
+                <span>·</span>
+                <span class="company">
+                    M2M Software Studio
+                </span>
+            </p>
+
+        </section>
+
+
+        <div class="divider"></div>
+
+
+        <!-- =========================
+             CONTACT INFORMATION
+        ========================== -->
+
+        <section class="contacts">
+
+            <!-- PHONE -->
+
+            <a
+                class="contact"
+                href="tel:01214964130"
+            >
+
+                <div class="icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                        <path d="
+                            M22 16.92v3
+                            a2 2 0 0 1-2.18 2
+                            19.79 19.79 0 0 1-8.63-3.07
+                            19.5 19.5 0 0 1-6-6
+                            19.79 19.79 0 0 1-3.07-8.67
+                            A2 2 0 0 1 4.11 2h3
+                            a2 2 0 0 1 2 1.72
+                            12.84 12.84 0 0 0 .7 2.81
+                            2 2 0 0 1-.45 2.11
+                            L8.09 9.91
+                            a16 16 0 0 0 6 6
+                            l1.27-1.27
+                            a2 2 0 0 1 2.11-.45
+                            12.84 12.84 0 0 0 2.81.7
+                            A2 2 0 0 1 22 16.92z">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+                <div class="details">
+
+                    <span class="label">
+                        Phone
+                    </span>
+
+                    <span class="value">
+                        01214964130
+                    </span>
+
+                </div>
+
+                <span class="arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+                class="contact"
+                href="mailto:youssefbassem407@gmail.com"
+            >
+
+                <div class="icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                        <rect
+                            x="3"
+                            y="5"
+                            width="18"
+                            height="14"
+                            rx="2">
+                        </rect>
+
+                        <path d="m3 7 9 6 9-6"></path>
+
+                    </svg>
+
+                </div>
+
+                <div class="details">
+
+                    <span class="label">
+                        Email
+                    </span>
+
+                    <span class="value">
+                        youssefbassem407@gmail.com
+                    </span>
+
+                </div>
+
+                <span class="arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+            <!-- WEBSITE -->
+
+            <a
+                class="contact"
+                href="https://m2m4solutions.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9">
+                        </circle>
+
+                        <line
+                            x1="3"
+                            y1="12"
+                            x2="21"
+                            y2="12">
+                        </line>
+
+                        <path d="
+                            M12 3
+                            c2.5 2.5 3.5 5.5 3.5 9
+                            s-1 6.5-3.5 9
+                            c-2.5-2.5-3.5-5.5-3.5-9
+                            s1-6.5 3.5-9z">
+                        </path>
+
+                    </svg>
+
+                </div>
+
+                <div class="details">
+
+                    <span class="label">
+                        Company Website
+                    </span>
+
+                    <span class="value">
+                        m2m4solutions.com
+                    </span>
+
+                </div>
+
+                <span class="arrow">
+                    ↗
+                </span>
+
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             ACTION BUTTONS
+        ========================== -->
+
+        <section class="actions">
+
+            <!-- SAVE CONTACT -->
+
+            <button
+                class="button save"
+                onclick="saveContact()"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path d="
+                        M19 21H5
+                        a2 2 0 0 1-2-2V5
+                        a2 2 0 0 1 2-2h11
+                        l5 5v11
+                        a2 2 0 0 1-2 2z">
+                    </path>
+
+                    <polyline
+                        points="17 21 17 13 7 13 7 21">
+                    </polyline>
+
+                    <polyline
+                        points="7 3 7 8 15 8">
+                    </polyline>
+
+                </svg>
+
+                Save Contact
+
+            </button>
+
+
+            <!-- WEBSITE -->
+
+            <a
+                class="button website"
+                href="https://m2m4solutions.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path d="M14 3h7v7"></path>
+
+                    <path d="M10 14 21 3"></path>
+
+                    <path d="
+                        M21 14v5
+                        a2 2 0 0 1-2 2H5
+                        a2 2 0 0 1-2-2V5
+                        a2 2 0 0 1 2-2h5">
+                    </path>
+
+                </svg>
+
+                Website
+
+            </a>
+
+        </section>
+
+
+        <div class="footer">
+            <span>M2M Software Studio</span> · 2026
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================== -->
+
+<div
+    id="toast"
+    class="toast"
+>
+    Contact saved
+</div>
+
+
+<script>
+
+function saveContact() {
+
+    /*
+     * Complete VCF contact
+     */
+
+    const vCard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:Youssef Bassem
+N:Bassem;Youssef;;;
+ORG:M2M Software Studio
+TITLE:Software Developer
+TEL;TYPE=CELL:01214964130
+EMAIL;TYPE=WORK:youssefbassem407@gmail.com
+URL:https://m2m4solutions.com/
+END:VCARD`;
+
+    const blob = new Blob(
+        [vCard],
+        {
+            type: "text/vcard;charset=utf-8"
+        }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download = "Youssef-Bassem.vcf";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+
+
+    /* Confirmation */
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2200);
+}
+
+</script>
+
+</body>
+</html>
+
